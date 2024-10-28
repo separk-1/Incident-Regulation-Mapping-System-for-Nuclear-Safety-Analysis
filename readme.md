@@ -137,31 +137,5 @@ Main dependencies include:
 - py2neo
 - numpy
 
-## Development Guidelines
-
-1. Code Style
-- Follow PEP 8
-- Use type hints
-- Write docstrings for all functions/classes
-
-2. Testing
-- Write unit tests for all new features
-- Maintain 80%+ test coverage
-
-3. Version Control
-- Create feature branches from `develop`
-- Use meaningful commit messages
-- Submit PRs for review
-
-## License
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Contributing
-1. Fork the repository
-2. Create your feature branch
-3. Commit your changes
-4. Push to the branch
-5. Create a Pull Request
-
 ## Contact
-Project maintainer: [Your Name](mailto:your.email@example.com)
+Project maintainer: [Seongeun Park](mailto:seongeup@andrew.cmu.edu)
