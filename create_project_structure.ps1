@@ -1,4 +1,3 @@
-# 모든 경로 생성
 $paths = @(
     ".github/workflows",
     "data/raw/ler",
@@ -15,7 +14,6 @@ $paths = @(
     "tests"
 )
 
-# 생성할 파일들
 $files = @(
     ".github/workflows/tests.yml",
     "src/data/__init__.py",
@@ -41,17 +39,17 @@ $files = @(
     "notebooks/03_relationship_analysis.ipynb"
 )
 
-# 모든 경로 생성
+# create all path
 foreach ($path in $paths) {
     New-Item -ItemType Directory -Path $path -Force
 }
 
-# 모든 파일 생성
+# create all files
 foreach ($file in $files) {
     New-Item -ItemType File -Path $file -Force
 }
 
-# .gitignore 파일 내용 작성
+# .gitignore 
 $gitignoreContent = @"
 # Python
 __pycache__/
@@ -104,7 +102,7 @@ data/knowledge_graph/*
 .env
 "@
 
-# requirements.txt 파일 내용 작성
+# requirements.txt 
 $requirementsContent = @"
 pandas==2.0.0
 numpy==1.24.3
@@ -118,11 +116,10 @@ pytest==7.4.3
 jupyter==1.0.0
 "@
 
-# 파일 내용 작성
 Set-Content -Path ".gitignore" -Value $gitignoreContent
 Set-Content -Path "requirements.txt" -Value $requirementsContent
 
-# 빈 .gitkeep 파일 생성
+# .gitkeep 
 New-Item -ItemType File -Path "data/raw/.gitkeep" -Force
 New-Item -ItemType File -Path "data/processed/.gitkeep" -Force
 New-Item -ItemType File -Path "data/knowledge_graph/.gitkeep" -Force
