@@ -1,11 +1,14 @@
-# Knowledge Graph-based Incident-Regulation Mapping System
+# Knowledge Graph-based Incident-Regulation Mapping System 🏭
 
-## Overview
+[![Python](https://img.shields.io/badge/Python-3.10-blue.svg)](https://www.python.org/)
+[![Neo4j](https://img.shields.io/badge/Neo4j-4.4+-green.svg)](https://neo4j.com/)
+[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
+## 🎯 Overview
 This project develops an automated system for mapping nuclear power plant incidents to relevant regulations using knowledge graph technology. The system aims to bridge the gap between explicit knowledge (regulations) and empirical knowledge (incident cases) in nuclear safety analysis.
 
-## Project Structure
+## 🗂️ Project Structure
 ```
-nuclear-safety-kg/
 ├── .github/
 │   └── workflows/
 │       └── tests.yml
@@ -49,30 +52,31 @@ nuclear-safety-kg/
 └── setup.py
 ```
 
-## Installation
+## 🚀 Installation
 
 1. Clone the repository
 ```bash
-git clone https://github.com/yourusername/nuclear-safety-kg.git
-cd nuclear-safety-kg
+git clone https://github.com/separk-1/Knowledge-Graph-based-Incident-Regulation-Mapping-System-for-Nuclear-Safety-Analysis.git
+cd Knowledge-Graph-based-Incident-Regulation-Mapping-System-for-Nuclear-Safety-Analysis
 ```
 
-2. Create and activate virtual environment
+2. Create and activate conda environment
 ```bash
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+conda create -n kg-irm python=3.10
+conda activate kg-irm
 ```
 
 3. Install dependencies
 ```bash
 pip install -r requirements.txt
+python -m spacy download en_core_web_sm
 ```
 
 4. Install Neo4j Community Edition
 - Download from [Neo4j Download Center](https://neo4j.com/download/)
 - Follow installation instructions for your operating system
 
-## Configuration
+## ⚙️ Configuration
 
 1. Create a `.env` file in the project root:
 ```env
@@ -84,7 +88,7 @@ LER_API_KEY=your_api_key
 
 2. Configure logging in `src/config/logging.yaml`
 
-## Usage
+## 📚 Usage
 
 1. Data Collection
 ```bash
@@ -103,12 +107,12 @@ python src/preprocessing/entity_extractor.py
 python src/knowledge_graph/graph_builder.py
 ```
 
-## Project Timeline
+## 📅 Project Timeline
 
 ### Week 1: Data Collection
-- Set up project structure
-- Implement web crawlers
-- Collect initial dataset
+- ✅ Set up project structure
+- 🔄 Implement web crawlers
+- 🔄 Collect initial dataset
 
 ### Week 2: Data Preprocessing
 - Text cleaning
@@ -125,17 +129,20 @@ python src/knowledge_graph/graph_builder.py
 - Accuracy validation
 - Documentation
 
-## Dependencies
+## 🛠️ Dependencies
 
 Main dependencies include:
-- Python 3.8+
+- Python 3.10
 - Neo4j 4.4+
-- pandas
-- requests
-- beautifulsoup4
-- spacy
-- py2neo
-- numpy
+- pandas 2.0.0
+- requests 2.31.0
+- beautifulsoup4 4.12.0
+- spacy 3.7.2
+- py2neo 2021.2.3
+- numpy 1.24.3
 
-## Contact
+## 📞 Contact
 Project maintainer: [Seongeun Park](mailto:seongeup@andrew.cmu.edu)
+
+## 📄 License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
