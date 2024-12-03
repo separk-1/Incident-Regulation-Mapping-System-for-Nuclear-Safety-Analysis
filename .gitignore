@@ -47,3 +47,6 @@ data/knowledge_graph/*
 
 # Environment variables
 .env
+
+# Note
+todo.txt
