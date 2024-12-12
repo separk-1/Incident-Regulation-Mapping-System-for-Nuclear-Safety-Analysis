@@ -26,10 +26,6 @@ This project develops an automated system for mapping nuclear power plant incide
 │   ├── 02_text_preprocessing.ipynb
 │   └── 03_relationship_analysis.ipynb
 ├── src/
-│   ├── data/
-│   │   ├── __init__.py
-│   │   ├── ler_crawler.py
-│   │   └── regulation_crawler.py
 │   ├── preprocessing/
 │   │   ├── __init__.py
 │   │   ├── text_cleaner.py
@@ -43,7 +39,6 @@ This project develops an automated system for mapping nuclear power plant incide
 │       └── graph_visualizer.py
 ├── tests/
 │   ├── __init__.py
-│   ├── test_crawlers.py
 │   └── test_preprocessing.py
 ├── .gitignore
 ├── LICENSE
@@ -91,10 +86,9 @@ LER_API_KEY=your_api_key
 ## 📚 Usage
 
 1. Data Collection
-```bash
-python src/data/ler_crawler.py
-python src/data/regulation_crawler.py
-```
+LER: https://lersearch.inl.gov/LERSearchCriteria.aspx
+Guideline: https://www.nrc.gov/reading-rm/doc-collections/cfr/index.html
+
 
 2. Data Preprocessing
 ```bash

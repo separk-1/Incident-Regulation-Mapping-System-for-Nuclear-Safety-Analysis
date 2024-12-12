@@ -7,7 +7,7 @@ selenium==4.15.2
 webdriver-manager==4.0.1
 
 # Database
-py2neo==2021.2.3
+py2neo==2021.2.4
 neo4j==5.14.0
 
 # NLP & Text Processing
