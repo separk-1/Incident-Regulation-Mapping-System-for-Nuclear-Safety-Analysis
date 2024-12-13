@@ -4,13 +4,14 @@ import networkx as nx
 from pyvis.network import Network
 import re
 import pickle
+import numpy as np
 
-# JSON 파일 경로
+# JSON FILE PATHS
 JSON_PATH = "../../data/processed/knowledge_graph.json"
 KG_PATH = "../../data/knowledge_graph/graph.html"
-GRAPH_PKL_PATH = "../../data/knowledge_graph/graph.pkl"  # 그래프 저장 경로
+GRAPH_PKL_PATH = "../../data/knowledge_graph/graph.pkl"  # Graph save path
 
-# 이미지에 제시된 관계 매핑 테이블
+# RELATIONSHIP MAPPING TABLE
 RELATION_MAP = {
     ("Event", "Cause"): "Causes",
     ("Event", "Influence"): "Results In",
@@ -31,13 +32,28 @@ RELATION_MAP = {
 with open(JSON_PATH, "r", encoding="utf-8") as f:
     data = json.load(f)
 
+# Filter out data points with NaN CFR content
+filtered_data = []
+removed_count = 0
+for item in data:
+    cfr_content = item["cfr"]
+    if all(isinstance(cfr_content.get(f"content_{i}"), str) and cfr_content[f"content_{i}"].strip() for i in range(1, 5)):
+        filtered_data.append(item)
+    else:
+        removed_count += 1
+
+total_count = len(data)
+print(f"Total data points: {total_count}")
+print(f"Removed data points with NaN CFR content: {removed_count}")
+
+# Process filtered data
 graph = nx.DiGraph()
 
 def add_cfr_hierarchy(graph, cfr_content, base_id):
     cfr_nodes = []
     for i in range(1, 5):
         c = cfr_content.get(f"content_{i}")
-        if c and c.strip():
+        if isinstance(c, str) and c.strip():
             cfr_nodes.append(c.strip())
 
     for i in range(len(cfr_nodes)):
@@ -49,15 +65,14 @@ def add_cfr_hierarchy(graph, cfr_content, base_id):
 
     return cfr_nodes
 
-# incident별 attribute value 노드 저장용
-incident_attr_values = {}  # {incident_id: {attr_key: [value_node_ids]}}
+# Incident-specific attribute-value nodes
+incident_attr_values = {}
 
-for idx, item in enumerate(data):
-    # Incident 노드 생성 (각 사건)
+for idx, item in enumerate(filtered_data):
     incident_id = f"Incident_{idx+1}"
     graph.add_node(incident_id, type="Incident", label=f"Incident {idx+1}")
 
-    # CFR 계층 추가
+    # Add CFR hierarchy
     cfr_nodes = add_cfr_hierarchy(graph, item["cfr"], incident_id)
     if cfr_nodes:
         cfr_leaf_node = f"{incident_id}_CFR_Level_{len(cfr_nodes)}"
@@ -80,7 +95,7 @@ for idx, item in enumerate(data):
             graph.add_edge(attr_node_id, val_node_id, relation="describes")
             value_node_ids.append(val_node_id)
 
-            # Clause에서 CFR Clause 노드 추출
+            # Extract CFR Clauses from Clause values
             if attr_key == "Clause":
                 match = re.search(r"(10 CFR [0-9.\(\)a-zA-Z/]+)", val)
                 if match:
@@ -94,7 +109,7 @@ for idx, item in enumerate(data):
         attribute_values[attr_key] = value_node_ids
     incident_attr_values[incident_id] = attribute_values
 
-# 속성 타입들 간에 테이블에 정의된 관계를 생성
+# Create relationships between attribute types
 for incident_id, attrs in incident_attr_values.items():
     attr_keys = list(attrs.keys())
     for source_attr in attr_keys:
@@ -104,30 +119,28 @@ for incident_id, attrs in incident_attr_values.items():
             key = (source_attr, target_attr)
             if key in RELATION_MAP:
                 relation_label = RELATION_MAP[key]
-                # source_attr values -> target_attr values 모든 쌍 연결
                 for s_node in attrs[source_attr]:
                     for t_node in attrs[target_attr]:
-                        # 엣지 추가 (Value 노드 간 관계)
                         graph.add_edge(s_node, t_node, relation=relation_label)
 
-# 그래프를 pickle로 저장
+# Save graph as pickle
 with open(GRAPH_PKL_PATH, "wb") as pf:
     pickle.dump(graph, pf)
 
 print(f"Graph saved to {GRAPH_PKL_PATH}")
 
-# PyVis 네트워크 생성
+# Create PyVis network
 net = Network(height="1000px", width="100%", directed=True)
 net.from_nx(graph)
 
-# 노드 hover title 설정
+# Add hover titles
 for node in net.nodes:
     n_id = node["id"]
     n_type = graph.nodes[n_id].get("type", "Unknown")
     label = graph.nodes[n_id].get("label", n_id)
     node["title"] = f"{label} (Type: {n_type})"
 
-# 색상 설정 (예시)
+# Set colors
 for node in net.nodes:
     n_type = graph.nodes[node["id"]].get("type", "")
     if n_type == "CFR":

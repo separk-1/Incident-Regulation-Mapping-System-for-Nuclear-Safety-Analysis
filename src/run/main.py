@@ -59,7 +59,7 @@ result_template = """
 <body>
 <h1>Analysis Result</h1>
 <div class="result-section">
-    <h2>GPT Analysis</h2>
+    <h2>Analysis</h2>
     <pre>{{gpt_analysis}}</pre>
 </div>
 
