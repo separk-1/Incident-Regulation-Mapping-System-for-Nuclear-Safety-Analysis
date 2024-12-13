@@ -3,9 +3,8 @@ import re
 import os
 
 # 경로 설정
-CFR_TEXT_PATH = "../../data/raw/cfr/50_73.txt"
 CSV_PATH = "../../data/processed/ler_cfr.csv"
-CFR_OUTPUT_PATH =  "../../data/processed/cfr.csv"
+CFR_OUTPUT_PATH =  "../../data/processed/cfr_empty.csv"
 
 df = pd.read_csv(CSV_PATH, encoding="utf-8")
 

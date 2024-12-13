@@ -4,7 +4,7 @@
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 ## 🎯 Overview
-This project develops an automated system for mapping nuclear power plant incidents to relevant regulations using knowledge graph technology. The system aims to bridge the gap between explicit knowledge (regulations) and empirical knowledge (incident cases) in nuclear safety analysis.
+This project develops an automated system for mapping nuclear power plant incidents to relevant regulations using knowledge graph and large language models(LLMs).
 
 ## 🔊 Project Structure
 ```
@@ -14,20 +14,13 @@ This project develops an automated system for mapping nuclear power plant incide
 ├── data/
 │   ├── raw/               # Original data from sources
 │   │   ├── ler/           # Licensee Event Reports
-│   │   └── regulations/   # NRC regulations
+│   │   └── cfr/           # NRC regulations
 │   ├── processed/         # Cleaned and processed data
 │       ├── bin/
 │       ├── ler_filtered/
 │       ├── ler_text/
 │       └── files (e.g., cfr.csv, ler_df.csv)
 │   └── knowledge_graph/   # Generated knowledge graph data
-├── docs/
-│   ├── api/              # API documentation
-│   └── guides/           # Usage guides and tutorials
-├── notebooks/            # Jupyter notebooks for analysis
-│   ├── 01_data_exploration.ipynb
-│   ├── 02_text_preprocessing.ipynb
-│   └── 03_relationship_analysis.ipynb
 ├── src/
 │   ├── preprocessing/
 │   │   ├── __init__.py
@@ -39,17 +32,10 @@ This project develops an automated system for mapping nuclear power plant incide
 │   │   └── 6_extract_entity.py
 │   ├── knowledge_graph/
 │   │   ├── __init__.py
-│   │   ├── 7_knowledge_graph.py
-│   │   └── graph_builder.py
-│   ├── run/
-│   │   ├── lib/
-│   │   └── other support scripts
-│   └── visualization/
+│   │   └── 7_knowledge_graph.py
+│   └── run/
 │       ├── __init__.py
-│       └── graph_visualizer.py
-├── tests/
-│   ├── __init__.py
-│   └── test_preprocessing.py
+│       └── main.py
 ├── .gitignore
 ├── LICENSE
 ├── README.md
@@ -61,8 +47,8 @@ This project develops an automated system for mapping nuclear power plant incide
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/separk-1/Knowledge-Graph-based-Incident-Regulation-Mapping-System-for-Nuclear-Safety-Analysis.git
-cd Knowledge-Graph-based-Incident-Regulation-Mapping-System-for-Nuclear-Safety-Analysis
+git clone https://github.com/separk-1/Incident-Regulation-Mapping-System-for-Nuclear-Safety-Analysis.git
+cd Incident-Regulation-Mapping-System-for-Nuclear-Safety-Analysis
 ```
 
 ### 2. Create and activate conda environment
@@ -116,7 +102,18 @@ python src/preprocessing/5_cfr_data.py
 ### 4. Knowledge Graph Construction
 Build the knowledge graph from processed data:
 ```bash
-python src/knowledge_graph/7_knowledge_graph.py
+python src/knowledge_graph/6_extract_entity.py
+```
+#### Input:
+- CSV files generated from the previous step.
+
+#### Output:
+- The script creates and visualizes a knowledge graph (using NetworkX) and saves it as a `.pkl` file.
+
+### 5. Retrieval and Inference
+Use `main.py` to input new data, retrieve the closest CFR matches, and identify similar incidents:
+```bash
+python src/run/main.py
 ```
 
 ## 🛠️ Dependencies

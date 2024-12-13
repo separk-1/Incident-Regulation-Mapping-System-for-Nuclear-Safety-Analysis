@@ -6,9 +6,9 @@ import re
 import pickle
 
 # JSON 파일 경로
-JSON_PATH = "../../data/processed/knowledge_graph_mini.json"
-KG_PATH = "../../data/knowledge_graph/graph_mini.html"
-GRAPH_PKL_PATH = "../../data/knowledge_graph/graph_mini.pkl"  # 그래프 저장 경로
+JSON_PATH = "../../data/processed/knowledge_graph.json"
+KG_PATH = "../../data/knowledge_graph/graph.html"
+GRAPH_PKL_PATH = "../../data/knowledge_graph/graph.pkl"  # 그래프 저장 경로
 
 # 이미지에 제시된 관계 매핑 테이블
 RELATION_MAP = {
