@@ -146,6 +146,7 @@ python src/run/main.py
 5) main.py: Performs retrieval and inference.
 - **Input**: New data for analysis.
 - **Output**: Closest CFR, reasoning, and similar incidents.
+![Example Output](assets/images/example_output.png)
 
 ## 🛠️ Dependencies
 
