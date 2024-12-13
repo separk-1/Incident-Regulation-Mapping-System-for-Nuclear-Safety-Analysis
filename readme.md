@@ -4,7 +4,7 @@
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 ## 🎯 Overview
-This project develops an automated system for mapping nuclear power plant incidents to relevant regulations using knowledge graph and large language models(LLMs).
+This project develops an automated system for mapping nuclear power plant incidents to relevant regulations using knowledge graph technology. The system aims to bridge the gap between explicit knowledge (regulations) and empirical knowledge (incident cases) in nuclear safety analysis.
 
 ## 🔊 Project Structure
 ```
@@ -78,43 +78,74 @@ To process all LER PDFs and map their content to relevant fields (e.g., Facility
 ```bash
 python src/preprocessing/1_ler_to_text.py
 ```
-
-#### Input:
-- Place all LER PDF files in the `data/raw/ler/` directory.
-
-#### Output:
-- The processed data will be saved as text files in `data/processed/ler_text/`.
+1-1) 1_ler_to_text.py: Converts raw LER PDF files to text.
+- **Input**: Raw LER PDF files (typically 4-5 pages including cover letters and incident records).
+- **Output**: Extracted text using `pdfplumber`.
 
 ### 2. Data Cleaning and Transformation
 Run scripts to clean text data and extract required fields:
 ```bash
 python src/preprocessing/2_text_to_df.py
+```
+1-2) 2_text_to_df.py: Extracts specific elements from the text (excluding CFR).
+- **Input**: Text extracted in the previous step.
+- **Output**: Dataframe (CSV) containing Facility Name, Title, Event Date, LER Number, Abstract, Narrative, and File Name.
+
+```bash
 python src/preprocessing/3_df_cleaner.py
 ```
+1-3) 3_df_cleaner.py: Filters out missing or "not found" data.
+- **Input**: Dataframe from the previous step.
+- **Output**: Cleaned CSV (removes rows with NaN values).
 
 ### 3. CFR Matching
 Match processed LER data to CFR regulations:
 ```bash
 python src/preprocessing/4_ler_to_cfr.py
+```
+2-1) 4_ler_to_cfr.py: Adds an empty CFR column.
+- **Input**: Filtered CSV from the previous step.
+- **Output**: Dataframe with `filename` and empty `CFR` columns.
+
+```bash
 python src/preprocessing/5_cfr_data.py
 ```
+2-2) 5_cfr_data.py: Prepares data for manual CFR labeling.
+- **Input**: Dataframe from the previous step.
+- **Output**: Dataframe containing `CFR` and `content` columns for manual labeling.
+
+2-3) Manual CFR Labeling: Label CFR data manually. (Automation planned for future versions.)
 
 ### 4. Knowledge Graph Construction
 Build the knowledge graph from processed data:
 ```bash
-python src/knowledge_graph/6_extract_entity.py
+python src/knowledge_graph/7_knowledge_graph.py
 ```
-#### Input:
-- CSV files generated from the previous step.
+4) 7_knowledge_graph.py: Generates and visualizes the knowledge graph.
+- **Input**: Processed CSV files.
+- **Output**: Knowledge graph visualization and `.pkl` file for storage.
 
-#### Output:
-- The script creates and visualizes a knowledge graph (using NetworkX) and saves it as a `.pkl` file.
+### 5. Entity Extraction and Inference
+```bash
+python src/preprocessing/6_extract_entity.py
+```
+3-1) 6_entity_extractor.py: Extracts attributes using GPT-4 API.
+- **Input**: Narrative text.
+- **Output**: JSON with extracted attributes:
+  - Event
+  - Cause
+  - Influence
+  - Corrective Actions
+  - Similar Events
+  - Guideline
+  - Clause
 
-### 5. Retrieval and Inference
-Use `main.py` to input new data, retrieve the closest CFR matches, and identify similar incidents:
 ```bash
 python src/run/main.py
 ```
+5) main.py: Performs retrieval and inference.
+- **Input**: New data for analysis.
+- **Output**: Closest CFR, reasoning, and similar incidents.
 
 ## 🛠️ Dependencies
 
@@ -124,6 +155,7 @@ Main dependencies include:
 - Pandas
 - pdfplumber
 - NetworkX
+- OpenAI API (for GPT-4 based entity extraction)
 
 ## ✅ License
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
