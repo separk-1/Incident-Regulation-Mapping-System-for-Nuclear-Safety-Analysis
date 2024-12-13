@@ -11,10 +11,10 @@ load_dotenv()
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
 # File paths
-LER_DF_PATH = "../../data/processed/ler_df_filtered.csv"  # Path to first CSV
-LER_CFR_PATH = "../../data/processed/ler_cfr.csv"  # Path to second CSV
+LER_DF_PATH = "../../data/processed/ler_df_filtered_mini.csv"  # Path to first CSV
+LER_CFR_PATH = "../../data/processed/ler_cfr_mini.csv"  # Path to second CSV
 CFR_PATH = "../../data/processed/cfr.csv"  # Path to CFR description CSV
-OUTPUT_JSON = "../../data/processed/knowledge_graph.json"  # Output JSON path
+OUTPUT_JSON = "../../data/processed/knowledge_graph_mini.json"  # Output JSON path
 
 # Read data
 ler_data = pd.read_csv(LER_DF_PATH)

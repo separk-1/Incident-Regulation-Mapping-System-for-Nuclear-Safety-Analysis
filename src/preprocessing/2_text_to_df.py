@@ -7,12 +7,14 @@ LER_TEXT_DIR = "../../data/processed/ler_text"
 OUTPUT_CSV_PATH = "../../data/processed/ler_df.csv"
 
 def find_line(keyword, lines):
+    # Find the index of the line containing the specified keyword
     for i, l in enumerate(lines):
         if keyword.lower() in l.lower():
             return i
     return None
 
 def extract_multi_line_section(lines, start_keyword, stop_keyword):
+    # Extract a section of text between start_keyword and stop_keyword
     start_idx = find_line(start_keyword, lines)
     if start_idx is None:
         return "Not Found"
@@ -25,6 +27,7 @@ def extract_multi_line_section(lines, start_keyword, stop_keyword):
     return " ".join(extracted).strip() if extracted else "Not Found"
 
 def extract_abstract(lines):
+    # Extract the abstract section of the text
     abs_idx = find_line("16. Abstract", lines)
     if abs_idx is None:
         return "Not Found"
@@ -36,6 +39,7 @@ def extract_abstract(lines):
     return " ".join(extracted).strip() if extracted else "Not Found"
 
 def extract_cfr(lines):
+    # Extract the CFR information from the text
     cfr_start = find_line("11. This Report is Submitted Pursuant", lines)
     if cfr_start is None:
         return "Not Found"
@@ -47,6 +51,7 @@ def extract_cfr(lines):
     return "Not Found"
 
 def extract_narrative(lines):
+    # Extract the narrative section of the text
     nar_idx = find_line("NARRATIVE", lines)
     if nar_idx is None:
         return "Not Found"
@@ -58,6 +63,7 @@ def extract_narrative(lines):
     return " ".join(extracted).strip() if extracted else "Not Found"
 
 def process_txt_file(txt_path):
+    # Process a single text file and extract relevant information
     with open(txt_path, "r", encoding="utf-8") as f:
         lines = [line.replace("(cid:9)", " ").strip() for line in f]
 
@@ -69,7 +75,7 @@ def process_txt_file(txt_path):
     cfr = "Not Found"
     narrative = "Not Found"
 
-    # 확장자 제거한 파일명
+    # Get the file name without extension
     file_name = os.path.splitext(os.path.basename(txt_path))[0]
 
     # Facility Name
@@ -89,7 +95,7 @@ def process_txt_file(txt_path):
     # Narrative
     narrative = extract_narrative(lines)
 
-    # Date/LER Pattern (하이픈 유무 대응)
+    # Date/LER Pattern (Handle with or without hyphens)
     date_ler_pattern = re.compile(r"\b(\d{2})\s+(\d{2})\s+(\d{4})\s+(\d{4})(?:\s*-?\s*)(\d{3})(?:\s*-?\s*)(\d{2})\b")
     for l in lines:
         m = date_ler_pattern.search(l)
@@ -111,6 +117,7 @@ def process_txt_file(txt_path):
     }
 
 def process_all_txt(txt_dir, output_csv_path):
+    # Process all text files in the directory and save results to a CSV file
     txt_files = [f for f in os.listdir(txt_dir) if f.lower().endswith(".txt")]
     extracted_data = []
 
@@ -122,5 +129,5 @@ def process_all_txt(txt_dir, output_csv_path):
     df = pd.DataFrame(extracted_data)
     df.to_csv(output_csv_path, index=False, encoding="utf-8")
 
-# 실행
+# Execute
 process_all_txt(LER_TEXT_DIR, OUTPUT_CSV_PATH)

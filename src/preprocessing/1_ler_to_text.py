@@ -16,38 +16,38 @@ def process_all_pdfs(raw_dir, output_dir):
         try:
             with pdfplumber.open(pdf_path) as pdf:
                 start_page = None
-                # 각 페이지 텍스트를 추출하면서 LICENSEE EVENT REPORT (LER) 존재여부 확인
+                # Check each page's text for the presence of "LICENSEE EVENT REPORT (LER)"
                 for idx, page in enumerate(pdf.pages):
                     text = page.extract_text() or ""
-                    # "LICENSEE EVENT REPORT (LER)"를 포함하는지 검사
+                    # Check if the text contains "LICENSEE EVENT REPORT (LER)"
                     if "LICENSEE EVENT REPORT (LER)" in text.upper():
                         start_page = idx
                         break
 
                 if start_page is None:
-                    # 해당 PDF에서 LER 페이지 찾지 못함 → 빈 텍스트 또는 Not Found 처리
+                    # If no LER page is found in the PDF, handle it with empty text or a "Not Found" message
                     extracted_text = "LICENSEE EVENT REPORT (LER) not found."
                 else:
-                    # start_page부터 끝 페이지까지 텍스트 추출 후 합치기
+                    # Extract text from start_page to the last page and concatenate it
                     extracted_texts = []
                     for p_idx in range(start_page, len(pdf.pages)):
                         p_text = pdf.pages[p_idx].extract_text() or ""
                         extracted_texts.append(p_text)
                     extracted_text = "\n".join(extracted_texts)
 
-                # 텍스트 파일로 저장
+                # Save the extracted text as a .txt file
                 txt_filename = os.path.splitext(pdf_file)[0] + ".txt"
                 txt_path = os.path.join(output_dir, txt_filename)
                 with open(txt_path, "w", encoding="utf-8") as f:
                     f.write(extracted_text)
 
         except Exception as e:
-            # PDF 처리 중 에러 발생 시 로그 출력 및 빈 파일 생성
+            # If an error occurs during PDF processing, log the error and create an empty file
             print(f"Error processing {pdf_file}: {e}")
             txt_filename = os.path.splitext(pdf_file)[0] + ".txt"
             txt_path = os.path.join(output_dir, txt_filename)
             with open(txt_path, "w", encoding="utf-8") as f:
                 f.write("Error extracting text.")
 
-# 실행
+# Execute
 process_all_pdfs(RAW_LER_DIR, OUTPUT_TEXT_DIR)

@@ -2,20 +2,20 @@ import pandas as pd
 import re
 import os
 
-# 경로 설정
+# Set paths
 CSV_PATH = "../../data/processed/ler_cfr.csv"
 CFR_OUTPUT_PATH =  "../../data/processed/cfr_empty.csv"
 
 df = pd.read_csv(CSV_PATH, encoding="utf-8")
 
-# 모든 CFR 항목을 하나의 리스트로 합치기
+# Combine all CFR items into a single list
 all_cfr = []
 for val in df["CFR"].dropna():
-    # val을 쉼표로 split 후 공백 제거
+    # Split val by commas and remove whitespace
     items = [c.strip() for c in val.split(",")]
     all_cfr.extend(items)
 
-# set을 사용해 중복 제거
+# Remove duplicates using set
 unique_cfr = list(set(all_cfr))
 
 print("Unique CFR list:", unique_cfr)
@@ -33,5 +33,5 @@ print(f"CFR CSV created and saved to: {CFR_OUTPUT_PATH}")
 print(cfr_df.head())  # Display the first few rows of the new CSV file for verification
 
 '''
-col: cfr, content. cfr에는 unique_cfr를 넣고, content에는 cfr에 해당하는 설명
+Columns: cfr, content. The "cfr" column contains the unique CFR values, and the "content" column will hold their corresponding descriptions.
 '''

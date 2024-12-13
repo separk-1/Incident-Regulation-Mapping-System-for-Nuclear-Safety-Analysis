@@ -11,7 +11,6 @@ os.makedirs(FILTERED_DIR, exist_ok=True)
 df = pd.read_csv(INPUT_CSV, encoding="utf-8")
 
 for fname in df["filename"]:
-    # fname이 확장자 없는 이름이라면 다음 줄처럼 .pdf 붙이기
     pdf_name = f"{fname}.pdf"
     src_path = os.path.join(RAW_LER_DIR, pdf_name)
     dst_path = os.path.join(FILTERED_DIR, pdf_name)

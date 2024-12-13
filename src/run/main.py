@@ -5,21 +5,21 @@ import networkx as nx
 from flask import Flask, request, render_template_string
 import webbrowser
 
-# 환경변수에서 OPENAI_API_KEY 가져오기
+# Retrieve OPENAI_API_KEY from environment variables
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
-# 피클로 저장한 그래프 로딩
-GRAPH_PKL_PATH = "../../data/knowledge_graph/graph_mini.pkl"
+# Load the graph stored in a pickle file
+GRAPH_PKL_PATH = "../../data/knowledge_graph/graph.pkl"
 with open(GRAPH_PKL_PATH, "rb") as f:
     graph = pickle.load(f)
 
-# 미리 만들어둔 PyVis HTML (graph_mini.html)
+# Pre-created PyVis HTML (graph_mini.html)
 KG_HTML_PATH = "../../data/knowledge_graph/graph_mini.html"
 
 
 app = Flask(__name__)
 
-# 메인 페이지 템플릿(심플한 inline template)
+# Main page template (simple inline template)
 index_template = """
 <!DOCTYPE html>
 <html lang="en">
@@ -43,7 +43,7 @@ index_template = """
 </html>
 """
 
-# 결과 페이지 템플릿
+# Result page template
 result_template = """
 <!DOCTYPE html>
 <html lang="en">
@@ -81,6 +81,7 @@ result_template = """
 """
 
 def gpt_extract_info(incident_text):
+    # Use GPT to extract key information from the incident description
     messages = [
         {"role": "system", "content": "You are an expert in nuclear incident analysis and CFR mapping."},
         {"role": "user",
@@ -142,10 +143,8 @@ def index():
 def analyze():
     incident_text = request.form.get("incident_text", "")
 
-    # GPT 기반 분석
     gpt_analysis = gpt_extract_info(incident_text)
 
-    # 그래프에서 CFR Clause와 Incidents 추출
     cfr_clauses = [n for n, d in graph.nodes(data=True) if d.get("type") == "CFR_Clause"]
     incidents = [n for n, d in graph.nodes(data=True) if d.get("type") == "Incident"]
 
@@ -162,13 +161,11 @@ def analyze():
 
 @app.route("/kg")
 def kg():
-    # knowledge graph html 파일을 그대로 return
     with open(KG_HTML_PATH, "r", encoding="utf-8") as f:
         html_content = f.read()
     return html_content
 
 if __name__ == "__main__":
-    # Flask 실행 시 자동으로 브라우저 열기 (옵션)
     url = "http://127.0.0.1:5000"
     webbrowser.open(url)
     app.run(debug=True)

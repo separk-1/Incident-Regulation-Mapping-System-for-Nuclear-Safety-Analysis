@@ -7,8 +7,8 @@ import pickle
 import numpy as np
 
 # JSON FILE PATHS
-JSON_PATH = "../../data/processed/knowledge_graph.json"
-KG_PATH = "../../data/knowledge_graph/graph.html"
+JSON_PATH = "../../data/processed/knowledge_graph_mini.json"
+KG_PATH = "../../data/knowledge_graph/graph_mini.html"
 GRAPH_PKL_PATH = "../../data/knowledge_graph/graph.pkl"  # Graph save path
 
 # RELATIONSHIP MAPPING TABLE
