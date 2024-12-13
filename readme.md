@@ -1,13 +1,12 @@
-# Knowledge Graph-based Incident-Regulation Mapping System 🏭
+# Knowledge Graph-based Incident-Regulation Mapping System 🏠
 
 [![Python](https://img.shields.io/badge/Python-3.10-blue.svg)](https://www.python.org/)
-[![Neo4j](https://img.shields.io/badge/Neo4j-4.4+-green.svg)](https://neo4j.com/)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 ## 🎯 Overview
 This project develops an automated system for mapping nuclear power plant incidents to relevant regulations using knowledge graph technology. The system aims to bridge the gap between explicit knowledge (regulations) and empirical knowledge (incident cases) in nuclear safety analysis.
 
-## 🗂️ Project Structure
+## 🔊 Project Structure
 ```
 ├── .github/
 │   └── workflows/
@@ -17,6 +16,10 @@ This project develops an automated system for mapping nuclear power plant incide
 │   │   ├── ler/           # Licensee Event Reports
 │   │   └── regulations/   # NRC regulations
 │   ├── processed/         # Cleaned and processed data
+│       ├── bin/
+│       ├── ler_filtered/
+│       ├── ler_text/
+│       └── files (e.g., cfr.csv, ler_df.csv)
 │   └── knowledge_graph/   # Generated knowledge graph data
 ├── docs/
 │   ├── api/              # API documentation
@@ -28,12 +31,19 @@ This project develops an automated system for mapping nuclear power plant incide
 ├── src/
 │   ├── preprocessing/
 │   │   ├── __init__.py
-│   │   ├── text_cleaner.py
-│   │   └── entity_extractor.py
+│   │   ├── 1_ler_to_text.py
+│   │   ├── 2_text_to_df.py
+│   │   ├── 3_df_cleaner.py
+│   │   ├── 4_ler_to_cfr.py
+│   │   ├── 5_cfr_data.py
+│   │   └── 6_extract_entity.py
 │   ├── knowledge_graph/
 │   │   ├── __init__.py
-│   │   ├── graph_builder.py
-│   │   └── relationship_extractor.py
+│   │   ├── 7_knowledge_graph.py
+│   │   └── graph_builder.py
+│   ├── run/
+│   │   ├── lib/
+│   │   └── other support scripts
 │   └── visualization/
 │       ├── __init__.py
 │       └── graph_visualizer.py
@@ -49,94 +59,75 @@ This project develops an automated system for mapping nuclear power plant incide
 
 ## 🚀 Installation
 
-1. Clone the repository
+### 1. Clone the repository
 ```bash
 git clone https://github.com/separk-1/Knowledge-Graph-based-Incident-Regulation-Mapping-System-for-Nuclear-Safety-Analysis.git
 cd Knowledge-Graph-based-Incident-Regulation-Mapping-System-for-Nuclear-Safety-Analysis
 ```
 
-2. Create and activate conda environment
+### 2. Create and activate conda environment
 ```bash
 conda create -n kg-irm python=3.10
 conda activate kg-irm
 ```
 
-3. Install dependencies
+### 3. Install dependencies
 ```bash
 pip install -r requirements.txt
 python -m spacy download en_core_web_sm
 ```
 
-4. Install Neo4j Community Edition
-- Download from [Neo4j Download Center](https://neo4j.com/download/)
-- Follow installation instructions for your operating system
-
 ## ⚙️ Configuration
 
-1. Create a `.env` file in the project root:
+### 1. Create a .env file in the project root:
 ```env
-NEO4J_URI=bolt://localhost:7687
-NEO4J_USER=neo4j
-NEO4J_PASSWORD=your_password
 LER_API_KEY=your_api_key
 ```
 
-2. Configure logging in `src/config/logging.yaml`
+## 📗 Usage
 
-## 📚 Usage
+### 1. Data Extraction: Process Licensee Event Reports (LERs)
+To process all LER PDFs and map their content to relevant fields (e.g., Facility Name, Title, LER Number, Event Date, Abstract, Narrative, and CFR), use the `1_ler_to_text.py` script:
 
-1. Data Collection
-LER: https://lersearch.inl.gov/LERSearchCriteria.aspx
-Guideline: https://www.nrc.gov/reading-rm/doc-collections/cfr/index.html
-
-
-2. Data Preprocessing
 ```bash
-python src/preprocessing/text_cleaner.py
-python src/preprocessing/entity_extractor.py
+python src/preprocessing/1_ler_to_text.py
 ```
 
-3. Knowledge Graph Construction
+#### Input:
+- Place all LER PDF files in the `data/raw/ler/` directory.
+
+#### Output:
+- The processed data will be saved as text files in `data/processed/ler_text/`.
+
+### 2. Data Cleaning and Transformation
+Run scripts to clean text data and extract required fields:
 ```bash
-python src/knowledge_graph/graph_builder.py
+python src/preprocessing/2_text_to_df.py
+python src/preprocessing/3_df_cleaner.py
 ```
 
-## 📅 Project Timeline
+### 3. CFR Matching
+Match processed LER data to CFR regulations:
+```bash
+python src/preprocessing/4_ler_to_cfr.py
+python src/preprocessing/5_cfr_data.py
+```
 
-### Week 1: Data Collection
-- ✅ Set up project structure
-- 🔄 Implement web crawlers
-- 🔄 Collect initial dataset
-
-### Week 2: Data Preprocessing
-- Text cleaning
-- Entity extraction
-- Basic relationship definition
-
-### Weeks 3-4: Knowledge Graph Development
-- Graph database setup
-- Entity classification
-- Relationship mapping
-
-### Weeks 5-6: Analysis and Validation
-- Pattern analysis
-- Accuracy validation
-- Documentation
+### 4. Knowledge Graph Construction
+Build the knowledge graph from processed data:
+```bash
+python src/knowledge_graph/7_knowledge_graph.py
+```
 
 ## 🛠️ Dependencies
 
 Main dependencies include:
 - Python 3.10
-- Neo4j 4.4+
-- pandas 2.0.0
-- requests 2.31.0
-- beautifulsoup4 4.12.0
-- spacy 3.7.2
-- py2neo 2021.2.3
-- numpy 1.24.3
+- SpaCy
+- Pandas
+- pdfplumber
+- NetworkX
 
-## 📞 Contact
-Project maintainer: [Seongeun Park](mailto:seongeup@andrew.cmu.edu)
+## ✅ License
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
-## 📄 License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
