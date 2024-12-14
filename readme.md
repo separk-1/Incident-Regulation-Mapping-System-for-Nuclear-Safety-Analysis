@@ -16,10 +16,10 @@ This project develops an automated system for mapping nuclear power plant incide
 │   │   ├── ler/           # Licensee Event Reports
 │   │   └── cfr/           # NRC regulations
 │   ├── processed/         # Cleaned and processed data
-│       ├── bin/
-│       ├── ler_filtered/
-│       ├── ler_text/
-│       └── files (e.g., cfr.csv, ler_df.csv)
+│   │   ├── bin/
+│   │   ├── ler_filtered/
+│   │   ├── ler_text/
+│   │   └── files (e.g., cfr.csv, ler_df.csv)
 │   └── knowledge_graph/   # Generated knowledge graph data
 ├── src/
 │   ├── preprocessing/
