@@ -1,9 +1,9 @@
 import pandas as pd
 
-CSV_PATH = "../../data/processed/ler_df.csv"  # Path to the CSV file
+CSV_PATH = "../../data/processed/ler_df_dateadded.csv"  # Path to the CSV file
 OUTPUT_FILTERED_CSV = "../../data/processed/ler_df_filtered.csv"  # Filtered CSV output path
 
-df = pd.read_csv(CSV_PATH, encoding="utf-8")
+df = pd.read_csv(CSV_PATH, encoding="Windows-1252")
 
 # df.eq("Not Found") creates a DataFrame of True/False values (True where cell is "Not Found")
 # any(axis=1) returns True if any "Not Found" value appears in the row

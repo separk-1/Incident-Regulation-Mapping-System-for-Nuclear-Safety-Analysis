@@ -11,100 +11,100 @@ load_dotenv()
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
 # File paths
-LER_DF_PATH = "../../data/processed/ler_df_filtered_mini.csv"  # Path to first CSV
-LER_CFR_PATH = "../../data/processed/ler_cfr_mini.csv"  # Path to second CSV
-CFR_PATH = "../../data/processed/cfr.csv"  # Path to CFR description CSV
-OUTPUT_JSON = "../../data/processed/knowledge_graph_mini.json"  # Output JSON path
+LER_DF_PATH = "../../data/processed/2_ler_df_filtered.csv"  # Path to LER data CSV
+CLAUSE_CSV_PATH = "../../data/processed/3_ler_cfr.csv"
+OUTPUT_JSON_PATH = "../../data/processed/ler_knowledge_graph_with_clause.json"  # Output JSON file
 
 # Read data
-ler_data = pd.read_csv(LER_DF_PATH)
-ler_cfr_data = pd.read_csv(LER_CFR_PATH)
-cfr_data = pd.read_csv(CFR_PATH)
+ler_df = pd.read_csv(LER_DF_PATH, encoding="utf-8")
+clause_df = pd.read_csv(CLAUSE_CSV_PATH, encoding="utf-8")
 
-# Filter rows where "File Name" matches between ler_data and ler_cfr_data
-common_files = set(ler_data["File Name"]).intersection(set(ler_cfr_data["filename"]))
-filtered_data = ler_data[ler_data["File Name"].isin(common_files)]
+ler_df = pd.merge(ler_df, clause_df, left_on="File Name", right_on="filename", how="left")
 
-# Merge ler_cfr_data based on filename
-filtered_data = pd.merge(filtered_data, ler_cfr_data, left_on="File Name", right_on="filename", how="inner")
+# Debugging: Display a sample of the merged data
+print("\nSample of the merged data:")
+print(ler_df.head())
 
-# Merge CFR data based on CFR column
-filtered_data = pd.merge(filtered_data, cfr_data, on="CFR", how="left")
-
-# Debugging output
-print("\nFiltered data after merging (sample):")
-print(filtered_data.head())
-
+# Define a function to extract attributes using GPT
 def extract_attributes(text):
     try:
+        # GPT prompt for concise incident analysis
         messages = [
-            {"role": "system", "content": "You are an expert in incident analysis and attribute extraction."},
+            {"role": "system", "content": "You are an expert in analyzing incidents and extracting key attributes."},
             {"role": "user", "content": f"""
-            Analyze the following text and extract the following attributes:
+            Extract the following attributes from the provided incident description:
 
-            - Event: Key events that occurred.
-            - Cause: The cause or reasons for the event.
-            - Influence: The influence or impact of the event.
-            - Corrective Actions: Actions taken to address the issue.
-            - Similar Events: Similar events reported in the past.
-            - Guideline: Procedures or guidelines referenced.
-            - Clause: Specific clauses or rules cited.
+            - Event: What happened?
+            - Cause: Why did it happen?
+            - Influence: What was the impact?
+            - Corrective Actions: What actions were taken to resolve it?
+            - Similar Events: Any similar events reported?
 
             Text: \"{text}\"
 
-            Output the results in JSON format with keys matching the attributes listed above.
+            Respond in JSON format.
             """},
         ]
 
+        # Call OpenAI GPT API
         response = openai.ChatCompletion.create(
             model="gpt-4",
             messages=messages,
-            temperature=0.5,
-            max_tokens=1200,
+            temperature=0.3,
+            max_tokens=1500,
+            top_p=0.8,
+            frequency_penalty=0.2,
+            presence_penalty=0.0
         )
+
         return json.loads(response["choices"][0]["message"]["content"])
     except Exception as e:
         print(f"GPT API error occurred: {e}")
         return None
 
-def cluster_by_cfr(filename, attributes, cfr_hierarchy):
-    cluster = {
-        "filename": filename,
-        "cfr": {
-            "content_1": cfr_hierarchy.get("content_1", ""),
-            "content_2": cfr_hierarchy.get("content_2", ""),
-            "content_3": cfr_hierarchy.get("content_3", ""),
-            "content_4": cfr_hierarchy.get("content_4", "")
-        },
-        "attributes": attributes
-    }
-    return cluster
 
-knowledge_clusters = []
+# Initialize a list to store knowledge graph nodes
+knowledge_graph = []
 
-for i, row in tqdm(filtered_data.iterrows(), total=len(filtered_data), desc="Processing rows"):
-    # Combine text from selected columns
+# Iterate over each row in the DataFrame
+# Iterate over each row in the DataFrame
+for i, row in tqdm(ler_df.iterrows(), total=len(ler_df), desc="Processing rows"):
+    # Combine relevant columns to create the text input for GPT
     combined_text = " ".join(
-        str(row.get(col, "")) for col in ["Abstract", "Narrative"]
+        str(row.get(col, "")) for col in ["Title", "Abstract", "Narrative"]  # Include Title
     )
 
-    extracted_attributes = extract_attributes(combined_text)
+    # Extract attributes from the text using GPT
+    attributes = extract_attributes(combined_text)
 
-    if extracted_attributes:
-        cfr_hierarchy = {
-            "content_1": row.get("content_1", ""),
-            "content_2": row.get("content_2", ""),
-            "content_3": row.get("content_3", ""),
-            "content_4": row.get("content_4", "")
+    if attributes:
+        # Fill missing attributes with defaults
+        attributes = {
+            "Event": attributes.get("Event", "Unknown"),
+            "Cause": attributes.get("Cause", "Unknown"),
+            "Influence": attributes.get("Influence", "Unknown"),
+            "Corrective Actions": attributes.get("Corrective Actions", "None"),
+            "Similar Events": attributes.get("Similar Events", "None")
         }
-        cluster = cluster_by_cfr(row.get("filename", ""), extracted_attributes, cfr_hierarchy)
-        knowledge_clusters.append(cluster)
+        clause = row.get("CFR", "None")
 
-print("\nKnowledge Clusters (sample):")
-print(knowledge_clusters[:3])
+        # Create a node for the knowledge graph
+        node = {
+            "filename": row.get("File Name", ""),  # Unique identifier for the file
+            "attributes": attributes,  # Extracted attributes
+            "metadata": {
+                "facility": row.get("Facility Name", ""),
+                "event_date": row.get("Event Date", ""),
+                "title": row.get("Title", ""),
+                "clause": clause  # Add clause to metadata
+            }
+        }
+        knowledge_graph.append(node)
 
-# Save results to JSON
-with open(OUTPUT_JSON, "w", encoding="utf-8") as json_file:
-    json.dump(knowledge_clusters, json_file, indent=4, ensure_ascii=False)
+        # Optional: Stream save each node (for large datasets)
+        with open(OUTPUT_JSON_PATH, "a", encoding="utf-8") as json_file:
+            json.dump(node, json_file, indent=4, ensure_ascii=False)
+            json_file.write(",\n")  # Add separator for multiple nodes
 
-print(f"\nKnowledge clusters saved to {OUTPUT_JSON}.")
+
+print(f"\nKnowledge graph saved to {OUTPUT_JSON_PATH}.")
