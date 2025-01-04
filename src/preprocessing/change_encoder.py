@@ -1,7 +1,7 @@
 import pandas as pd
 
-input_file = "../../data/processed/3_cfr.csv"
-output_file = "../../data/processed/3_cfr.csv"
+input_file = "../../data/processed/2_ler_df_filtered_checked.csv"
+output_file = "../../data/processed/2_ler_df_filtered_checked.csv"
 
 data = pd.read_csv(input_file, encoding='Windows-1252')
 

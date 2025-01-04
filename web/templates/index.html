@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Page</title>
+    <link rel="icon" href="{{ url_for('static', filename='magnifying_glass.png') }}" type="image/png">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <div class="search-container">
+        <input type="text" id="question" class="search-box" placeholder="Enter your question" onkeydown="handleKeyPress(event)">
+    </div>
+
+    <!-- Display the answer and references below -->
+    <div id="answer-section">
+        <p id="answer" class="answer-text"></p>
+        <p id="references-title">References</p>
+        <ul id="references" class="faded-references"></ul>
+    </div>
+
+    <script>
+        // Submit the question with the Enter key
+        function handleKeyPress(event) {
+            if (event.key === "Enter") {
+                askQuestion();
+            }
+        }
+
+        // Function to send the question to the server
+        function askQuestion() {
+            const question = document.getElementById("question").value;
+
+            if (!question) {
+                alert("Please enter a question.");
+                return;
+            }
+
+            // Apply loading animation
+            document.getElementById("question").classList.add("loading");
+            document.getElementById("answer").innerText = "";
+            document.getElementById("references").innerHTML = "";
+            document.getElementById("references-title").style.display = "none"; // Hide the references title
+
+            // Send the question to the server
+            fetch("/ask", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ question: question })
+        }).then(response => response.json())
+        .then(data => {
+            // Remove loading animation
+            document.getElementById("question").classList.remove("loading");
+            
+            if (data.error) {
+                alert(data.error);
+            } else {
+                // Display the answer
+                document.getElementById("answer").innerText = data.answer;
+
+                // Render the reference data
+                const referencesList = document.getElementById("references");
+                referencesList.innerHTML = '';  // Remove existing references
+
+                if (data.references && data.references.length > 0) {
+                    // Display the reference title
+                    document.getElementById("references-title").style.display = "block";
+                    data.references.forEach(ref => {
+                        // Display both file_path and file_title for each object
+                        const listItem = document.createElement('li');
+                        listItem.textContent = `${ref.file_title} (${ref.file_path})`;  // Show both file title and path
+                        referencesList.appendChild(listItem);
+                    });
+                } else {
+                    document.getElementById("references-title").style.display = "none";
+                    referencesList.innerHTML = '<li>No references found.</li>';
+                }
+            }
+        }).catch(err => {
+            // Remove loading animation if there is an error
+            document.getElementById("question").classList.remove("loading");
+            alert("Error: " + err);
+        });
+
+    }
+    </script>
+</body>
+</html>

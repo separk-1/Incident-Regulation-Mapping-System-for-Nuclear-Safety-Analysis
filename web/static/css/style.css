@@ -1,0 +1,95 @@
+/* Full page layout */
+body, html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    justify-content: center;
+}
+
+/* Center align the search box container */
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+/* Search box styling */
+.search-box {
+    width: 700px;
+    padding: 15px;
+    font-size: 18px;
+    border-radius: 50px;
+    border: 1px solid #dfe1e5;
+    box-shadow: 0px 1px 6px rgba(32, 33, 36, 0.28);
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+/* Styling when the search box is focused */
+.search-box:focus {
+    box-shadow: 0px 1px 8px rgba(32, 33, 36, 0.4);
+}
+
+/* Loading animation */
+.search-box.loading {
+    border-color: transparent;
+    animation: spin-border 2s linear infinite;
+}
+
+@keyframes spin-border {
+    0% {
+        box-shadow: 0 0 5px 5px rgba(66, 133, 244, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 10px 10px rgba(66, 133, 244, 0.7);
+    }
+    100% {
+        box-shadow: 0 0 5px 5px rgba(66, 133, 244, 0.5);
+    }
+}
+
+/* Span elements on the sides */
+.side-span {
+    font-size: 24px;
+    color: #666;
+    padding: 0 10px;
+}
+
+/* Answer text styling */
+.answer-text {
+    font-size: 18px;  /* Reduce font size */
+    line-height: 1.5; /* Set line spacing */
+    text-align: left;  /* Left-align text */
+    margin: 20px 40px; /* Set left and right margin */
+    color: #333;
+}
+
+/* Faded and smaller reference list */
+.faded-references {
+    font-size: 14px;
+    color: #888;
+    list-style-type: none;
+    padding: 0;
+    text-align: left;
+    margin: 10px 40px;  /* Set left and right margin */
+}
+
+.faded-references li {
+    margin-top: 5px;
+    color: #666;
+}
+
+/* Reference title */
+#references-title {
+    font-weight: bold;
+    margin-top: 20px;
+    display: none; /* Hidden by default */
+    font-size: 16px;
+    text-align: left;
+    margin-left: 40px; /* Left margin */
+}
