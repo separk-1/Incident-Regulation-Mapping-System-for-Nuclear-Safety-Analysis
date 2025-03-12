@@ -147,7 +147,6 @@ python src/run/main.py
 - **Input**: New data for analysis.
 - **Output**: Closest CFR, reasoning, and similar incidents.
 - **Test**: test model with data/example_prompt.json
-![Example GIF](./assets/example_usage.gif)
 ![Example Output](assets/images/example_input.png)
 ![Example Output](assets/images/example_output.png)
 
