@@ -1,0 +1,785 @@
+[{
+    "filename": "2502023004R00",
+    "attributes": {
+        "Task": [
+            "RPS Testing"
+        ],
+        "Event": [
+            "Automatic Scram"
+        ],
+        "Cause": [
+            "Human Error"
+        ],
+        "Influence": [
+            "System Trip"
+        ],
+        "Corrective Actions": [
+            "Procedure Revision"
+        ],
+        "Similar Events": []
+    },
+    "metadata": {
+        "facility": {
+            "name": "Turkey Point",
+            "unit": "Unit 3"
+        },
+        "event_date": "10/24/2023",
+        "title": "Unplanned Automatic Scram During RPS Testing",
+        "clause": "50.73.(a)(2)(v)(A)"
+    }
+},
+{
+    "filename": "3342021001R00",
+    "attributes": {
+        "Task": [
+            "Startup"
+        ],
+        "Event": [
+            "Technical Violation"
+        ],
+        "Cause": [
+            "Human Error"
+        ],
+        "Influence": [
+            "Operational Disruption"
+        ],
+        "Corrective Actions": [
+            "Procedure Revision"
+        ],
+        "Similar Events": []
+    },
+    "metadata": {
+        "facility": {
+            "name": "Beaver Valley Power Station",
+            "unit": "Unit 1"
+        },
+        "event_date": "5/8/2021",
+        "title": "Containment Isolation Valve Found Restrained Open Resulting in Condition Prohibited by Technical Specifications",
+        "clause": "50.73.(a)(2)(i)(B)"
+    }
+},
+{
+    "filename": "3482022001R00",
+    "attributes": {
+        "Task": [
+            "Maintenance"
+        ],
+        "Event": [
+            "System Failure"
+        ],
+        "Cause": [
+            "Human Error"
+        ],
+        "Influence": [
+            "Power Loss"
+        ],
+        "Corrective Actions": [
+            "Procedure Revision"
+        ],
+        "Similar Events": []
+    },
+    "metadata": {
+        "facility": {
+            "name": "Joseph M. Farley Nuclear Plant",
+            "unit": "Unit 1"
+        },
+        "event_date": "8/3/2022",
+        "title": "Outdated Relay Settings Resulted in an Automatic Reactor Trip After a Floor Tile was Dropped in High Voltage Switch House",
+        "clause": "50.73.(a)(2)(iv)(A)"
+    }
+},
+{
+    "filename": "3482023002R00",
+    "attributes": {
+        "Task": [
+            "Surveillance"
+        ],
+        "Event": [
+            "Equipment Failure"
+        ],
+        "Cause": [
+            "Human Error"
+        ],
+        "Influence": [
+            "Operational Disruption"
+        ],
+        "Corrective Actions": [
+            "Process Adjustment"
+        ],
+        "Similar Events": []
+    },
+    "metadata": {
+        "facility": {
+            "name": "Joseph M. Farley Nuclear Plant",
+            "unit": "Unit 1"
+        },
+        "event_date": "10/2/2023",
+        "title": "Residual Heat Removal Pump Inoperable for Longer than Allowed by Technical Specifications",
+        "clause": "50.73.(a)(2)(i)(B)"
+    }
+},
+{
+    "filename": "3692023001R00",
+    "attributes": {
+        "Task": [
+            "Maintenance Operation"
+        ],
+        "Event": [
+            "System Actuation"
+        ],
+        "Cause": [
+            "Human Error"
+        ],
+        "Influence": [
+            "System Disruption"
+        ],
+        "Corrective Actions": [
+            "Personnel Accountability"
+        ],
+        "Similar Events": []
+    },
+    "metadata": {
+        "facility": {
+            "name": "McGuire Nuclear Station",
+            "unit": "Unknown Unit"
+        },
+        "event_date": "10/18/2023",
+        "title": "Automatic Actuation of the 1A Motor Driven Auxiliary Feedwater Pump Due to Human Error",
+        "clause": "50.73.(a)(2)(iv)(A)"
+    }
+},
+{
+    "filename": "3902021001R00",
+    "attributes": {
+        "Task": [
+            "Control Room Operation"
+        ],
+        "Event": [
+            "System Inoperability"
+        ],
+        "Cause": [
+            "Human Error"
+        ],
+        "Influence": [
+            "Safety Risk"
+        ],
+        "Corrective Actions": [
+            "Procedure Reinforcement"
+        ],
+        "Similar Events": []
+    },
+    "metadata": {
+        "facility": {
+            "name": "McGuire Nuclear Station",
+            "unit": "Unit 1"
+        },
+        "event_date": "3/1/2021",
+        "title": "Control Room Emergency Ventilation System Inoperable due to Main Control Room Door Being Left Open",
+        "clause": "50.73.(a)(2)(v)(D)"
+    }
+},
+{
+    "filename": "2502024002R01",
+    "attributes": {
+        "Task": [
+            "Valve Operation"
+        ],
+        "Event": [
+            "Technical Violation"
+        ],
+        "Cause": [
+            "Misinterpretation"
+        ],
+        "Influence": [
+            "System Inoperability"
+        ],
+        "Corrective Actions": [
+            "Repair"
+        ],
+        "Similar Events": []
+    },
+    "metadata": {
+        "facility": {
+            "name": "Turkey Point",
+            "unit": "Unit 3"
+        },
+        "event_date": "2/7/2021",
+        "title": "Condition Prohibited by Technical Specifications",
+        "clause": "50.73.(a)(2)(i)(B)"
+    }
+},
+{
+    "filename": "2612023001R00",
+    "attributes": {
+        "Task": [
+            "Operation Monitoring"
+        ],
+        "Event": [
+            "Technical Specification Violation"
+        ],
+        "Cause": [
+            "Procedure Misapplication"
+        ],
+        "Influence": [
+            "Safety Function Maintenance"
+        ],
+        "Corrective Actions": [
+            "Procedure Revision"
+        ],
+        "Similar Events": []
+    },
+    "metadata": {
+        "facility": {
+            "name": "H. B. Robinson Steam Electric Plant",
+            "unit": "Unit 2"
+        },
+        "event_date": "6/12/2023",
+        "title": "Condition Prohibited by Technical Specification Due to Missed Entry into Limiting Condition for Operation i",
+        "clause": "50.73.(a)(2)(i)(B)"
+    }
+},
+{
+    "filename": "2802022003R00",
+    "attributes": {
+        "Task": [
+            "Maintenance"
+        ],
+        "Event": [
+            "Equipment Failure"
+        ],
+        "Cause": [
+            "Incorrect Parts"
+        ],
+        "Influence": [
+            "Operational Disruption"
+        ],
+        "Corrective Actions": [
+            "Procedural Enhancements"
+        ],
+        "Similar Events": []
+    },
+    "metadata": {
+        "facility": {
+            "name": "Surry Power Station",
+            "unit": "Unit 1"
+        },
+        "event_date": "9/15/2022",
+        "title": "Loss of Emergency Switchgear Room Cooling Due to Use of Incorrect Air Handler Fan V-Belts",
+        "clause": "50.73.(a)(2)(i)(B), 50.73.(a)(2)(v)(A), 50.73.(a)(2)(vii)"
+    }
+},
+{
+    "filename": "2822021002R00",
+    "attributes": {
+        "Task": [
+            "Transformer Restoration"
+        ],
+        "Event": [
+            "Power Loss"
+        ],
+        "Cause": [
+            "Operational Error"
+        ],
+        "Influence": [
+            "System Actuation"
+        ],
+        "Corrective Actions": [
+            "Risk Oversight Implementation"
+        ],
+        "Similar Events": []
+    },
+    "metadata": {
+        "facility": {
+            "name": "Prairie Island Nuclear Generating Plant",
+            "unit": "Unit 1"
+        },
+        "event_date": "10/17/2021",
+        "title": "Loss of Electrical Bus Results in 121 Motor Driven Cooling Water Pump Auto Start",
+        "clause": "50.73.(a)(2)(iv)(A)"
+    }
+},
+{
+    "filename": "4832022002R00",
+    "attributes": {
+        "Task": [
+            "Surveillance Testing"
+        ],
+        "Event": [
+            "Technical Failure"
+        ],
+        "Cause": [
+            "Operational Error"
+        ],
+        "Influence": [
+            "Safety Risk"
+        ],
+        "Corrective Actions": [
+            "Training"
+        ],
+        "Similar Events": []
+    },
+    "metadata": {
+        "facility": {
+            "name": "Callaway Plant",
+            "unit": "Unit 1"
+        },
+        "event_date": "6/21/2022",
+        "title": "Containment Spray Recirculation Valve Out of Position Resulted in Condition Prohibited by Technical Specifications and Condition Which Could Have Prevented Fulfillment of a Safety Function",
+        "clause": "50.73.(a)(2)(i)(B), 50.73.(a)(2)(v)(C), 50.73.(a)(2)(v)(D)"
+    }
+},
+{
+    "filename": "3272021003R00",
+    "attributes": {
+        "Task": [
+            "Work Procedure"
+        ],
+        "Event": [
+            "System Inoperability"
+        ],
+        "Cause": [
+            "Miscommunication"
+        ],
+        "Influence": [
+            "Safety Risk"
+        ],
+        "Corrective Actions": [
+            "Procedure Revision"
+        ],
+        "Similar Events": []
+    },
+    "metadata": {
+        "facility": {
+            "name": "Sequoyah Nuclear Plant",
+            "unit": "Unit 1"
+        },
+        "event_date": "8/20/2021",
+        "title": "Exceeded Breach Margin Renders Both Trains of the Auxiliary Building Gas Treatment System Inoperable",
+        "clause": "50.73.(a)(2)(i)(B)"
+    }
+},
+{
+    "filename": "3282021002R00",
+    "attributes": {
+        "Task": [
+            "Turbine Maintenance"
+        ],
+        "Event": [
+            "Equipment Malfunction"
+        ],
+        "Cause": [
+            "Procedural Noncompliance"
+        ],
+        "Influence": [
+            "Operational Disruption"
+        ],
+        "Corrective Actions": [
+            "Procedure Revision"
+        ],
+        "Similar Events": []
+    },
+    "metadata": {
+        "facility": {
+            "name": "Sequoyah Nuclear Plant",
+            "unit": "Unit 1"
+        },
+        "event_date": "11/8/2021",
+        "title": "Turbine Trip Function Inoperable Due to Slow to Close Turbine Throttle Valve",
+        "clause": "50.73.(a)(2)(i)(B), 50.73.(a)(2)(v)(D)"
+    }
+},
+{
+    "filename": "3392023001R00",
+    "attributes": {
+        "Task": [
+            "Welding"
+        ],
+        "Event": [
+            "Leak"
+        ],
+        "Cause": [
+            "Poor Workmanship"
+        ],
+        "Influence": [
+            "System Degradation"
+        ],
+        "Corrective Actions": [
+            "Component Replacement"
+        ],
+        "Similar Events": [
+            "Welding Defects"
+        ]
+    },
+    "metadata": {
+        "facility": {
+            "name": "North Anna Power Station",
+            "unit": "Unknown Unit"
+        },
+        "event_date": "10/3/2023",
+        "title": "Reactor Coolant Pressure Boundary Leak Due to Poor Weld Workmanship",
+        "clause": "50.73.(a)(2)(ii)(A)"
+    }
+},
+{
+    "filename": "3902023001R01",
+    "attributes": {
+        "Task": [
+            "Plant Operation"
+        ],
+        "Event": [
+            "Regulatory Non-compliance"
+        ],
+        "Cause": [
+            "Inadequate Screening"
+        ],
+        "Influence": [
+            "Operational Disruption"
+        ],
+        "Corrective Actions": [
+            "Regulatory Amendment"
+        ],
+        "Similar Events": []
+    },
+    "metadata": {
+        "facility": {
+            "name": "Watts Bar Nuclear Plant",
+            "unit": "Unit 1"
+        },
+        "event_date": "5/3/2023",
+        "title": "Inadequate 10 CFR 50.59 Results in Failure to Obtain Prior NRC Approval for Condition Prohibited by Technical Specifications",
+        "clause": "50.73.(a)(2)(i)(B)"
+    }
+},
+{
+    "filename": "3952023001R00",
+    "attributes": {
+        "Task": [
+            "Reactor Operation"
+        ],
+        "Event": [
+            "System Failure"
+        ],
+        "Cause": [
+            "Improper Maintenance"
+        ],
+        "Influence": [
+            "Operational Disruption"
+        ],
+        "Corrective Actions": [
+            "Failure Analysis"
+        ],
+        "Similar Events": []
+    },
+    "metadata": {
+        "facility": {
+            "name": "V.C. Summer Nuclear Station",
+            "unit": "Unit 1"
+        },
+        "event_date": "4/5/2023",
+        "title": "MANUAL REACTOR TRIP DUE TO LOSS OF MAIN FEEDWATER PUMP",
+        "clause": "50.73.(a)(2)(i)(B)"
+    }
+},
+{
+    "filename": "4002021004R00",
+    "attributes": {
+        "Task": [
+            "Surveillance Testing"
+        ],
+        "Event": [
+            "Technical Specification Violation"
+        ],
+        "Cause": [
+            "Personnel Error"
+        ],
+        "Influence": [
+            "Safety Tolerance Breach"
+        ],
+        "Corrective Actions": [
+            "Equipment Replacement"
+        ],
+        "Similar Events": []
+    },
+    "metadata": {
+        "facility": {
+            "name": "Shearon Harris Nuclear Power Plant",
+            "unit": "Unit 1"
+        },
+        "event_date": "4/29/2021",
+        "title": "Pressurizer Safety Valve Lift Setpoint Drifted Outside of Technical Specification Tolerance",
+        "clause": "50.73.(a)(2)(i)(B)"
+    }
+},
+{
+    "filename": "4002021005R00",
+    "attributes": {
+        "Task": [
+            "Radiation Monitoring"
+        ],
+        "Event": [
+            "Technical Malfunction"
+        ],
+        "Cause": [
+            "Incorrect Data Entry"
+        ],
+        "Influence": [
+            "Operational Disruption"
+        ],
+        "Corrective Actions": [
+            "Data Correction"
+        ],
+        "Similar Events": []
+    },
+    "metadata": {
+        "facility": {
+            "name": "Shearon Harris Nuclear Power Plant",
+            "unit": "Unit 1"
+        },
+        "event_date": "6/22/2021",
+        "title": "Past Inoperability of Effluent Accident Monitor Exceeded Time Allowed by Technical Specifications",
+        "clause": "50.73.(a)(2)(i)(B)"
+    }
+},
+{
+    "filename": "4002022004R00",
+    "attributes": {
+        "Task": [
+            "Testing"
+        ],
+        "Event": [
+            "System Failure"
+        ],
+        "Cause": [
+            "Procedure Violation"
+        ],
+        "Influence": [
+            "Safety Risk"
+        ],
+        "Corrective Actions": [
+            "Restoration"
+        ],
+        "Similar Events": []
+    },
+    "metadata": {
+        "facility": {
+            "name": "Shearon Harris Nuclear Power Plant",
+            "unit": "Unit 1"
+        },
+        "event_date": "5/2/2022",
+        "title": "Both Trains of High Head Safety Injection Inoperable",
+        "clause": "50.73.(a)(2)(i)(B), 50.73.(a)(2)(v)(A), 50.73.(a)(2)(v)(D)"
+    }
+},
+{
+    "filename": "4002022007R01",
+    "attributes": {
+        "Task": [
+            "Power Transfer"
+        ],
+        "Event": [
+            "Reactor Trip"
+        ],
+        "Cause": [
+            "Wiring Error"
+        ],
+        "Influence": [
+            "System Disruption"
+        ],
+        "Corrective Actions": [
+            "Rewiring"
+        ],
+        "Similar Events": []
+    },
+    "metadata": {
+        "facility": {
+            "name": "Shearon Harris Nuclear Power Plant",
+            "unit": "Unit 1"
+        },
+        "event_date": "10/30/2022",
+        "title": "Automatic Reactor Trip due to Loss of Power from the ??A??Auxiliary Bus",
+        "clause": "50.73.(a)(2)(iv)(A)"
+    }
+},
+{
+    "filename": "4122021004R00",
+    "attributes": {
+        "Task": [
+            "Reactor Operation"
+        ],
+        "Event": [
+            "Manual Reactor Trip"
+        ],
+        "Cause": [
+            "Procedure Misreading"
+        ],
+        "Influence": [
+            "Reactor Shutdown"
+        ],
+        "Corrective Actions": [
+            "Procedural Clarifications"
+        ],
+        "Similar Events": []
+    },
+    "metadata": {
+        "facility": {
+            "name": "Beaver Valley Power Station",
+            "unit": "Unit 2"
+        },
+        "event_date": "11/12/2021",
+        "title": "Unit 2 Manual Reactor Trip",
+        "clause": "50.73.(a)(2)(iv)(A)"
+    }
+},
+{
+    "filename": "4122022001R00",
+    "attributes": {
+        "Task": [
+            "Power Station Operation"
+        ],
+        "Event": [
+            "Technical Malfunction"
+        ],
+        "Cause": [
+            "Procedure Oversight"
+        ],
+        "Influence": [
+            "Safety Function Loss"
+        ],
+        "Corrective Actions": [
+            "Procedure Revision"
+        ],
+        "Similar Events": [
+            "Fuel Oil Intrusion"
+        ]
+    },
+    "metadata": {
+        "facility": {
+            "name": "Beaver Valley Power Station",
+            "unit": "Unit 2"
+        },
+        "event_date": "7/13/2022",
+        "title": "Unit 2 Operation or Condition Prohibited by Technical Specification and Loss of Safety Function due to Emergency Diesel Generator Fuel Oil Intrusion into Lube Oil",
+        "clause": "50.73.(a)(2)(i)(B), 50.73.(a)(2)(v)(A), 50.73.(a)(2)(v)(D)"
+    }
+},
+{
+    "filename": "4122023002R00",
+    "attributes": {
+        "Task": [
+            "System Operation"
+        ],
+        "Event": [
+            "System Malfunction"
+        ],
+        "Cause": [
+            "Incorrect Settings"
+        ],
+        "Influence": [
+            "Unnecessary Activation"
+        ],
+        "Corrective Actions": [
+            "Procedure Revision"
+        ],
+        "Similar Events": []
+    },
+    "metadata": {
+        "facility": {
+            "name": "Beaver Valley Power Station",
+            "unit": "Unit 2"
+        },
+        "event_date": "5/19/2023",
+        "title": "Automatic Actuation of Auxiliary Feedwater System",
+        "clause": "50.73.(a)(2)(iv)(A)"
+    }
+},
+{
+    "filename": "4122023003R01",
+    "attributes": {
+        "Task": [
+            "Equipment Movement"
+        ],
+        "Event": [
+            "Safety Breach"
+        ],
+        "Cause": [
+            "Procedure Negligence"
+        ],
+        "Influence": [
+            "Operational Disruption"
+        ],
+        "Corrective Actions": [
+            "Procedure Enhancement"
+        ],
+        "Similar Events": []
+    },
+    "metadata": {
+        "facility": {
+            "name": "Beaver Valley Power Station",
+            "unit": "Unit 2"
+        },
+        "event_date": "6/11/2023",
+        "title": "Missile Barrier Door Left Open Resulting in a Loss of Safety Function",
+        "clause": "50.73.(a)(2)(i)(B), 50.73.(a)(2)(ii)(B), 50.73.(a)(2)(v)(B), 50.73.(a)(2)(vii)"
+    }
+},
+{
+    "filename": "4562021001R00",
+    "attributes": {
+        "Task": [
+            "Reactor Startup"
+        ],
+        "Event": [
+            "System Bypass"
+        ],
+        "Cause": [
+            "Procedure Noncompliance"
+        ],
+        "Influence": [
+            "Safety Risk"
+        ],
+        "Corrective Actions": [
+            "System Restoration"
+        ],
+        "Similar Events": []
+    },
+    "metadata": {
+        "facility": {
+            "name": "Braidwood Station",
+            "unit": "Unit 1"
+        },
+        "event_date": "4/23/2021",
+        "title": "Train A and B Source Range Neutron Flux Trip Functions Bypassed During Plant Startup",
+        "clause": "50.73.(a)(2)(i)(B)"
+    }
+},
+{
+    "filename": "4822021003R00",
+    "attributes": {
+        "Task": [
+            "Reactor Startup"
+        ],
+        "Event": [
+            "Reactor Trip"
+        ],
+        "Cause": [
+            "Improper Utilization"
+        ],
+        "Influence": [
+            "System Disruption"
+        ],
+        "Corrective Actions": [
+            "Control Parameter Tuning"
+        ],
+        "Similar Events": []
+    },
+    "metadata": {
+        "facility": {
+            "name": "Wolf Creek Generating Station",
+            "unit": "Unknown Unit"
+        },
+        "event_date": "5/12/2021",
+        "title": "Automatic Reactor Trip Due to Low Steam Generator Level",
+        "clause": "50.73.(a)(2)(iv)(A)"
+    }
+}
+]

@@ -1,0 +1,106 @@
+CauseDescription,IncidentCount,Type
+Human Error,6,Human
+Corrosion,5,
+Equipment Malfunction,5,
+Equipment Failure,4,
+Inadequate Procedure,3,Procedure
+Lightning Strike,3,
+Procedure Error,3,Procedure
+Valve Failure,2,
+Component Malfunction,2,
+Operational Error,2,Human
+Setpoint Drift,2,
+Misalignment,2,
+Mechanical Discontinuities,1,
+Procedure Deficiency,1,Procedure
+Bearing Failure,1,
+Inadequate Procedures,1,Procedure
+Ground Fault,1,
+Loose Coupling Nut,1,
+O-ring Failure,1,
+Design Non-Conformance,1,
+Foreign Material Intrusion,1,
+Control System Failure,1,
+Inadequate Lubrication,1,
+Defective Relay,1,
+Transformer Failure,1,
+Cabling Chafing,1,
+Degraded Servo,1,
+Faulty Lift Pressure,1,
+Faulty Position Indication,1,
+Corrosion Cracking,1,
+Procedure Noncompliance,1,Human
+Thermal and Pressure Stresses,1,
+Quality Control,1,
+Improper Utilization,1,Human
+Low Lubrication,1,
+Procedure Inadequacy,1,Procedure
+Extreme Weather,1,
+Inadequate Guidance,1,Procedure
+Excessive Leakage,1,
+Inadequate Maintenance,1,
+Electrical Flashover,1,
+Material Condition,1,
+Insulator Failure,1,
+Inadequate Procedure Guidance,1,Procedure
+Inadequate Work Processes,1,Procedure
+Incorrect Relay Settings,1,
+Incorrect Setting,1,
+Construction Error,1,
+Defective Insulation,1,
+Control Failure,1,
+Condenser Vacuum Degradation,1,
+Switch Malfunction,1,
+Design Limitations,1,
+Valve Leakage,1,
+Under Investigation,1,
+Misinterpretation,1,Human
+Procedure Misapplication,1,Human
+Biofouling,1,
+Incorrect Parts,1,Human
+Low Pressure,1,
+Electrical Transient,1,
+Insulator Contamination,1,
+High Vibrations,1,
+Low Frequency Condition,1,
+Vibration-Induced Fatigue,1,
+Faulty Pin Connections,1,
+Miscommunication,1,Human
+High Cycle Fatigue,1,
+Mechanical Binding,1,
+Power Supply Failure,1,
+Procedural Noncompliance,1,Human
+Valve Malfunction,1,
+Piping Failure,1,
+Poor Workmanship,1,Human
+Data Input Error,1,
+Inadequate Restraints,1,
+Internal Steam Cutting,1,
+Setpoint drift,1,
+Signal Errors,1,
+Design Error,1,
+Component Failure,1,
+Valve Dysfunction,1,
+Inadequate Screening,1,Human
+Design Issue,1,
+Loose Connection,1,
+Design Vulnerability,1,
+Design Deficiency,1,
+Faulty Connection,1,
+Improper Maintenance,1,Human
+Personnel Error,1,Human
+Incorrect Data Entry,1,Human
+Procedure Violation,1,Human
+Actuator Malfunction,1,
+Wiring Error,1,Human
+Manufacturing Defects,1,
+Procedure Misreading,1,Human
+Equipment Unavailability,1,
+Procedure Oversight,1,Human
+Incorrect Settings,1,Human
+Procedure Negligence,1,Human
+Contamination,1,
+Connection Loss,1,
+Equipment Inadequacy,1,
+Degradation,1,
+Misaligned Control Rods,1,

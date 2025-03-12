@@ -1,0 +1,27 @@
+Filename,Cause
+2502023004R00,Human Error
+3342021001R00,Human Error
+3482022001R00,Human Error
+3482023002R00,Human Error
+3692023001R00,Human Error
+3902021001R00,Human Error
+2502024002R01,Misinterpretation
+2612023001R00,Procedure Misapplication
+2802022003R00,Incorrect Parts
+2822021002R00,Operational Error
+4832022002R00,Operational Error
+3272021003R00,Miscommunication
+3282021002R00,Procedural Noncompliance
+3392023001R00,Poor Workmanship
+3902023001R01,Inadequate Screening
+3952023001R00,Improper Maintenance
+4002021004R00,Personnel Error
+4002021005R00,Incorrect Data Entry
+4002022004R00,Procedure Violation
+4002022007R01,Wiring Error
+4122021004R00,Procedure Misreading
+4122022001R00,Procedure Oversight
+4122023002R00,Incorrect Settings
+4122023003R01,Procedure Negligence
+4562021001R00,Procedure Noncompliance
+4822021003R00,Improper Utilization
